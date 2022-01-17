@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import moment from "moment";
+moment.locale("tr");
 function Calendar({
   checkInDate,
   checkOutDate,
@@ -91,7 +92,6 @@ function Calendar({
                 style={{ backgroundColor: setColor(item), cursor: "pointer" }}
                 onClick={() => selectDate(item)}
               >
-                {/* {moment(item, "DD/YY/MMMM").format("DD")} */}
                 {moment(item, "DD/MM/YYYY").format("DD")}
               </button>
             ))}
