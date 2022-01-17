@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
-moment.locale("en");
+import "moment/locale/tr";
+moment.locale("tr");
 function Calendar({
   checkInDate,
   checkOutDate,

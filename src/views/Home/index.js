@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Calendar from "../../components/Calendar";
 import moment from "moment";
+import "moment/locale/tr";
+moment.locale("tr");
 
 const Home = () => {
   const [checkIn, setCheckIn] = useState(false); //check-in görünürlüğü
@@ -67,9 +69,9 @@ const Home = () => {
   };
   //Seçilen aynı ayın içindeki aralıkları  koyulaştır. Class binding
   const selectedItems = (days) => {
-    let handledDays = moment(days, "DD.MM.YYYY");
-    let handledCheckInDate = moment(checkInDate, "DD.MM.YYYY");
-    let handledCheckOutDate = moment(checkOutDate, "DD.MM.YYYY");
+    let handledDays = moment(days, "DD/MM/YYYY");
+    let handledCheckInDate = moment(checkInDate, "DD/MM/YYYY");
+    let handledCheckOutDate = moment(checkOutDate, "DD/MM/YYYY");
 
     if (handledDays > handledCheckInDate && handledDays < handledCheckOutDate) {
       return "selected";
