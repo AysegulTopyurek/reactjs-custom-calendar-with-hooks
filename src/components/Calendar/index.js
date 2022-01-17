@@ -7,7 +7,6 @@ function Calendar({
   currentMonth,
   currentYear,
   daysInMonth,
-  daysInYear,
   prevMonth,
   handleChangeMonth,
   nextMonth,
