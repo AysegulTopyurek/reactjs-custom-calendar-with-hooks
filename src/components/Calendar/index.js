@@ -16,6 +16,7 @@ function Calendar({
   handleChangeYear,
 }) {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
   const minYears = Array(currentYear - (currentYear - 20))
     .fill("")
     .map((v, idx) => currentYear - 1 - idx);
@@ -90,7 +91,7 @@ function Calendar({
                 style={{ backgroundColor: setColor(item), cursor: "pointer" }}
                 onClick={() => selectDate(item)}
               >
-                {item.slice(0, 2)}
+                {moment(item, "DD/YY/MMMM").format("DD")}
               </button>
             ))}
           </div>
