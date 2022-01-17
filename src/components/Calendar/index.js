@@ -91,7 +91,8 @@ function Calendar({
                 style={{ backgroundColor: setColor(item), cursor: "pointer" }}
                 onClick={() => selectDate(item)}
               >
-                {moment(item, "DD/YY/MMMM").format("DD")}
+                {/* {moment(item, "DD/YY/MMMM").format("DD")} */}
+                {moment(item, "DD/MM/YYYY").format("DD")}
               </button>
             ))}
           </div>
