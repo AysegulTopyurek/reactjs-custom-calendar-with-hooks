@@ -16,16 +16,23 @@ const Home = () => {
 
   const getAllDaysInMonth = (month, year) => {
     var date = new Date(year, month, 1);
+
     var days = [];
     while (date.getMonth() === month) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1);
     }
+    console.log(days.toLocaleString());
     return days;
   };
   const getAllDays = (month) => {
     return getAllDaysInMonth(month, currentYear).map((x) =>
-      x.toLocaleDateString()
+      x.toLocaleDateString("en-GB", {
+        // you can use undefined as first argument
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
     );
   };
 
@@ -38,6 +45,7 @@ const Home = () => {
   for (let i = 0; i < daysInYear[currentMonth].length; i++) {
     daysInMonth.push(daysInYear[currentMonth][i]);
   }
+
   //takvimde geri gitme
   const prevMonth = () => {
     if (currentMonth <= 0) {
