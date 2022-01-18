@@ -16,19 +16,17 @@ const Home = () => {
 
   const getAllDaysInMonth = (month, year) => {
     var date = new Date(year, month, 1);
-
     var days = [];
     while (date.getMonth() === month) {
       days.push(new Date(date));
       date.setDate(date.getDate() + 1);
     }
-    console.log(days.toLocaleString());
     return days;
   };
   const getAllDays = (month) => {
     return getAllDaysInMonth(month, currentYear).map((x) =>
       x.toLocaleDateString("en-GB", {
-        // you can use undefined as first argument
+        // bütün günleri çekerken formatlı çekmek için
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
@@ -121,51 +119,32 @@ const Home = () => {
           <button className="btn-date" onClick={() => visibleCheck("in")}>
             CheckIn
           </button>
-          {checkIn && (
-            <div>
-              <Calendar
-                checkInDate={checkInDate}
-                checkOutDate={checkOutDate}
-                currentMonth={currentMonth}
-                currentYear={currentYear}
-                daysInMonth={daysInMonth}
-                daysInYear={daysInYear}
-                prevMonth={prevMonth}
-                handleChangeMonth={handleChangeMonth}
-                nextMonth={nextMonth}
-                selectDate={selectDate}
-                selectedItems={selectedItems}
-                visibleCheck={visibleCheck}
-                handleChangeYear={handleChangeYear}
-              />
-            </div>
-          )}
         </div>
         <div className="date-picker">
           <div className="checked-date">{checkOutDate}</div>
           <button className="btn-date" onClick={() => visibleCheck("out")}>
             CheckOut
           </button>
-          {checkOut && (
-            <div>
-              <Calendar
-                checkInDate={checkInDate}
-                checkOutDate={checkOutDate}
-                currentMonth={currentMonth}
-                currentYear={currentYear}
-                daysInMonth={daysInMonth}
-                daysInYear={daysInYear}
-                prevMonth={prevMonth}
-                handleChangeMonth={handleChangeMonth}
-                nextMonth={nextMonth}
-                selectDate={selectDate}
-                selectedItems={selectedItems}
-                visibleCheck={visibleCheck}
-                handleChangeYear={handleChangeYear}
-              />
-            </div>
-          )}
         </div>
+        {(checkOut || checkIn) && (
+          <div>
+            <Calendar
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              currentMonth={currentMonth}
+              currentYear={currentYear}
+              daysInMonth={daysInMonth}
+              daysInYear={daysInYear}
+              prevMonth={prevMonth}
+              handleChangeMonth={handleChangeMonth}
+              nextMonth={nextMonth}
+              selectDate={selectDate}
+              selectedItems={selectedItems}
+              visibleCheck={visibleCheck}
+              handleChangeYear={handleChangeYear}
+            />
+          </div>
+        )}
       </div>
       <footer>
         <p>
